@@ -1,7 +1,7 @@
 // Load the Visualization API and the linechart package.
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(function() {
-  Papa.parse("path/to/your/data.csv", {
+  Papa.parse("vhis_latest.csv", {
     download: true,
     header: true,
     complete: function(results) {
