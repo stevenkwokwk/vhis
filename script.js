@@ -51,9 +51,21 @@ function drawChart(data) {
   });
 }
 
-function filterData(data, gender, selectedPlans) {
-  // Implement filtering logic based on gender and selected plans
-  // Return the filtered data in the format required by Google Charts
+/**
+ * Filters the data based on selected scheme and gender.
+ * 
+ * @param {Array} data - The complete dataset.
+ * @param {string} selectedScheme - The selected scheme from the dropdown.
+ * @param {string} selectedGender - The selected gender from the dropdown.
+ * @returns {Array} - Filtered data based on the selected scheme and gender.
+ */
+function filterData(data, selectedScheme, selectedGender) {
+    // Filter the data based on the scheme and gender
+    return data.filter(row => {
+        const matchesScheme = selectedScheme === "All" || row['Plan'] === selectedScheme;
+        const matchesGender = selectedGender === "All" || row['Gender'] === selectedGender;
+        return matchesScheme && matchesGender;
+    });
 }
 
 function updateChart(originalData, chartData, chart, options) {
