@@ -130,29 +130,26 @@ function drawChart() {
 
 function getSelectedPlans() {
     var selectBox = document.getElementById('planSelect');
-    var selectedPlans = [];
+    var selectedPlanIndices = [];
     for (var i = 0; i < selectBox.options.length; i++) {
         if (selectBox.options[i].selected) {
-            selectedPlans.push(selectBox.options[i].value);
+            selectedPlanIndices.push(i); // Push the index of the selected plan
         }
     }
-    return selectedPlans;
+    return selectedPlanIndices;
 }
 
 
-function filterData(data, selectedPlans) {
+
+function filterData(data, selectedPlanIndices) {
     var headers = data[0];
     var filteredHeaders = ['Age'];
     var columnIndex = [];
 
-    if (selectedPlans.includes("AIA")) {
-        filteredHeaders.push(headers[1]);
-        columnIndex.push(1);
-    }
-    if (selectedPlans.includes("AnLian")) {
-        filteredHeaders.push(headers[2]);
-        columnIndex.push(2);
-    }
+    selectedPlanIndices.forEach(function(planIndex) {
+        filteredHeaders.push(headers[planIndex + 1]); // +1 because the first column is 'Age'
+        columnIndex.push(planIndex + 1);
+    });
 
     var filteredData = [filteredHeaders];
 
@@ -165,4 +162,5 @@ function filterData(data, selectedPlans) {
     }
     return filteredData;
 }
+
 
