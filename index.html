@@ -6,6 +6,12 @@
     <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
+    <label for="planSelect">Select Plan:</label>
+    <select id="planSelect" multiple size="2" onchange="drawChart()">
+        <option value="AIA" selected>AIA 自願醫保標準計劃</option>
+        <option value="AnLian">安聯醫療保障</option>
+    </select>
     <div id="line_chart" style="width: 900px; height: 500px;"></div>
 </body>
+</html>
 </html>
