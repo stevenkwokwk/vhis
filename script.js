@@ -50,22 +50,28 @@ function getSelectedPlans() {
     return selectedPlans;
 }
 
+
 function filterData(data, selectedPlans) {
-    var filteredData = [];
-    filteredData.push(data[0]); // Add headers
+    var headers = data[0];
+    var filteredHeaders = ['Age'];
+    var columnIndex = [];
+
+    if (selectedPlans.includes("AIA")) {
+        filteredHeaders.push(headers[1]);
+        columnIndex.push(1);
+    }
+    if (selectedPlans.includes("AnLian")) {
+        filteredHeaders.push(headers[2]);
+        columnIndex.push(2);
+    }
+
+    var filteredData = [filteredHeaders];
 
     for (var i = 1; i < data.length; i++) {
         var row = [data[i][0]]; // Add age
-        if (selectedPlans.includes("AIA")) {
-            row.push(data[i][1]);
-        } else {
-            row.push(null);
-        }
-        if (selectedPlans.includes("AnLian")) {
-            row.push(data[i][2]);
-        } else {
-            row.push(null);
-        }
+        columnIndex.forEach(function(index) {
+            row.push(data[i][index]);
+        });
         filteredData.push(row);
     }
     return filteredData;
