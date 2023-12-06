@@ -27,44 +27,31 @@ function drawChart() {
 function getSelectedPlans() {
     var selectBox = document.getElementById('planSelect');
     var selectedPlanIndices = [];
-
-    for (var i = 2; i < selectBox.options.length; i++) { // Start from index 2 to skip 'Select All' and 'Deselect All'
+    for (var i = 0; i < selectBox.options.length; i++) {
         if (selectBox.options[i].selected) {
-            selectedPlanIndices.push(i - 2); // Adjust index because of the two new options
+            selectedPlanIndices.push(i); // Push the index of the selected plan
         }
     }
-
-    // Check for Select All or Deselect All
-    if (selectBox.options[0].selected) { // Select All
-        selectedPlanIndices = [];
-        for (var i = 2; i < selectBox.options.length; i++) {
-            selectedPlanIndices.push(i - 2);
-            selectBox.options[i].selected = true;
-        }
-    } else if (selectBox.options[1].selected) { // Deselect All
-        selectedPlanIndices = [];
-        for (var i = 2; i < selectBox.options.length; i++) {
-            selectBox.options[i].selected = false;
-        }
-    }
-
     return selectedPlanIndices;
 }
 
-// Call this function whenever the chart needs to be redrawn
-function updateSelection() {
+
+document.getElementById('selectAllButton').addEventListener('click', function() {
+    updateSelectOptions(true);
+});
+
+document.getElementById('deselectAllButton').addEventListener('click', function() {
+    updateSelectOptions(false);
+});
+
+function updateSelectOptions(selectAll) {
     var selectBox = document.getElementById('planSelect');
-    if (selectBox.options[0].selected) { // If Select All is selected
-        for (var i = 2; i < selectBox.options.length; i++) {
-            selectBox.options[i].selected = true;
-        }
-    } else if (selectBox.options[1].selected) { // If Deselect All is selected
-        for (var i = 2; i < selectBox.options.length; i++) {
-            selectBox.options[i].selected = false;
-        }
+    for (var i = 0; i < selectBox.options.length; i++) {
+        selectBox.options[i].selected = selectAll;
     }
     drawChart();
 }
+
 
 
 
