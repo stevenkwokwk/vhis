@@ -27,12 +27,43 @@ function drawChart() {
 function getSelectedPlans() {
     var selectBox = document.getElementById('planSelect');
     var selectedPlanIndices = [];
-    for (var i = 0; i < selectBox.options.length; i++) {
+
+    for (var i = 2; i < selectBox.options.length; i++) { // Start from index 2 to skip 'Select All' and 'Deselect All'
         if (selectBox.options[i].selected) {
-            selectedPlanIndices.push(i); // Push the index of the selected plan
+            selectedPlanIndices.push(i - 2); // Adjust index because of the two new options
         }
     }
+
+    // Check for Select All or Deselect All
+    if (selectBox.options[0].selected) { // Select All
+        selectedPlanIndices = [];
+        for (var i = 2; i < selectBox.options.length; i++) {
+            selectedPlanIndices.push(i - 2);
+            selectBox.options[i].selected = true;
+        }
+    } else if (selectBox.options[1].selected) { // Deselect All
+        selectedPlanIndices = [];
+        for (var i = 2; i < selectBox.options.length; i++) {
+            selectBox.options[i].selected = false;
+        }
+    }
+
     return selectedPlanIndices;
+}
+
+// Call this function whenever the chart needs to be redrawn
+function updateSelection() {
+    var selectBox = document.getElementById('planSelect');
+    if (selectBox.options[0].selected) { // If Select All is selected
+        for (var i = 2; i < selectBox.options.length; i++) {
+            selectBox.options[i].selected = true;
+        }
+    } else if (selectBox.options[1].selected) { // If Deselect All is selected
+        for (var i = 2; i < selectBox.options.length; i++) {
+            selectBox.options[i].selected = false;
+        }
+    }
+    drawChart();
 }
 
 
