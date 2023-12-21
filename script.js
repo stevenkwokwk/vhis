@@ -4,6 +4,13 @@ google.charts.setOnLoadCallback(drawChart);
 
 var chartData=chartDataFemale;
 
+var planColors = {
+    "Bowtie 保泰": "#ff0068",
+    // Add more plans and their colors here
+    // "PlanName": "ColorCode"
+};
+
+
 function drawChart() {
     var selectedPlans = getSelectedPlans();
     var filteredData = filterData(chartData, selectedPlans);
@@ -14,10 +21,7 @@ function drawChart() {
         title: 'Insurance Premiums by Age',
         hAxis: {title: 'Age'},
         vAxis: {title: 'Premium'},
-        series: {
-            0: { color: '#e2431e' },
-            1: { color: '#6f9654' }
-        },
+        series: getSeriesOptions(selectedPlanIndices),
         curveType: 'function',
         legend: { position: 'bottom' }
     };
@@ -36,6 +40,22 @@ function getSelectedPlans() {
     }
     return selectedPlanIndices;
 }
+
+function getSeriesOptions(selectedPlanIndices) {
+    var seriesOptions = {};
+    var headers = chartData[0];
+
+    selectedPlanIndices.forEach(function(index, i) {
+        var planName = headers[index + 1]; // +1 to skip the 'Age' column
+        var color = planColors[planName];
+        if (color) {
+            seriesOptions[i] = { color: color };
+        }
+    });
+
+    return seriesOptions;
+}
+
 
 
 document.getElementById('selectAllButton').addEventListener('click', function() {
