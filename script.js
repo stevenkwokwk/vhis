@@ -21,7 +21,7 @@ function drawChart() {
         title: 'Insurance Premiums by Age',
         hAxis: {title: 'Age'},
         vAxis: {title: 'Premium'},
-        series: getSeriesOptions(selectedPlan),
+        series: getSeriesOptions(selectedPlans),
         curveType: 'function',
         legend: { position: 'bottom' }
     };
