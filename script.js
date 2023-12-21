@@ -2,6 +2,8 @@ google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
 
+var chartData=chartDataFemale;
+
 function drawChart() {
     var selectedPlans = getSelectedPlans();
     var filteredData = filterData(chartData, selectedPlans);
