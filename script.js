@@ -29,7 +29,7 @@ function getSelectedPlans() {
     var selectedPlanIndices = [];
     for (var i = 0; i < selectBox.options.length; i++) {
         if (selectBox.options[i].selected) {
-            selectedValue=selectBox.options[i].value;
+            selectedValue=int(selectBox.options[i].value);
             selectedPlanIndices.push(selectedValue); // Push the index of the selected plan
         }
     }
