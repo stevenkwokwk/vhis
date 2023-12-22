@@ -19,7 +19,15 @@ function drawChart() {
 
    var options = {
         hAxis: {title: '年齡'},
-        vAxis: {title: '保費'},
+        vAxis: {
+            title: '保費',
+            format: 'short', // This will format the numbers with a K for thousand, M for million, etc.
+            viewWindow: {
+                min: 0,
+                max: 30000 // or a suitable maximum value based on your data
+            },
+            gridlines: { count: 6 }
+        },
         series: getSeriesOptions(selectedPlans),
         curveType: 'function',
         legend: { position: 'bottom' },
