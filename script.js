@@ -31,15 +31,18 @@ function drawChart() {
 }
 
 function getSelectedPlans() {
-    var selectBox = document.getElementById('planSelect');
+    var checkboxes = document.querySelectorAll('.planOption');
     var selectedPlanIndices = [];
-    for (var i = 0; i < selectBox.options.length; i++) {
-        if (selectBox.options[i].selected) {
-            selectedPlanIndices.push(i); // Push the index of the selected plan
+
+    checkboxes.forEach(function(checkbox, index) {
+        if (checkbox.checked) {
+            selectedPlanIndices.push(index);
         }
-    }
+    });
+
     return selectedPlanIndices;
 }
+
 
 function getSeriesOptions(selectedPlanIndices) {
     var seriesOptions = {};
@@ -56,6 +59,14 @@ function getSeriesOptions(selectedPlanIndices) {
     return seriesOptions;
 }
 
+
+function selectAllCheckboxes(source) {
+    var checkboxes = document.querySelectorAll('.planOption');
+    checkboxes.forEach(function(checkbox) {
+        checkbox.checked = source.checked;
+    });
+    drawChart();
+}
 
 
 document.getElementById('selectAllButton').addEventListener('click', function() {
