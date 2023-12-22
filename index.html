@@ -12,15 +12,25 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="chartData.js"></script>
     <style>
+        body {
+            color: rgb(42, 46, 66);
+            font-family: Gilroy, "Noto Sans TC", Helvetica, Arial, sans-serif;
+            font-weight: 400;
+            line-height: 1.5rem;
+            font-size: 0.875rem;
+        }
+        
         div[id*='google-visualization-errors'] {
             display:none;
         }
+
+        
     </style>
 </head>
 <body>
     <div class="container p-3">
         <div class="row">
-            <div class="col-sm-3 col-12 mb-3 border rounded">
+            <div class="col-sm-3 col-12 mb-3 border rounded bg-light border-0 p-3">
                 <div>
                     <p>假設投保人為非吸煙人士</p>
                     <p class="fw-bold">1.揀選性別（只可二選一）</p>
@@ -39,7 +49,7 @@
                 </div>
                 <div>
                     <div class="dropdown">
-                        <p>2.揀選你想比較的保險公司標準計劃</p>
+                        <p class="fw-bold">2.揀選你想比較的保險公司標準計劃</p>
                       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         揀選保險公司
                       </button>
@@ -84,15 +94,16 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="accordion" id="accordionExample">
+                    <div class="accordion accordion-flush" id="accordionExample">
                       <div class="accordion-item">
                         <h2 class="accordion-header">
-                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <button class="accordion-button  bg-white text-black " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             備註
                           </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                           <div class="accordion-body">
+                              <p>以下為各保險計劃的正式名稱</p>
                             <ul class="text-sm-start">
                                 <li>Chubb 安達：安達自願醫保（標準）計劃 (安達人壽保險香港有限公司)</li>
                                 <li>Blue Cross 藍十字：「只衛您」標準自願醫保計劃</li>
@@ -124,6 +135,7 @@
                                 <li>AXA 安盛：AXA安盛守慧醫療保障 (安盛保險（百慕達）有限公司)</li>
                                 <li>ZA Life 眾安人壽：ZA 自願醫保</li>
                             </ul>
+                              <p>資料來源:<a href="https://www.vhis.gov.hk/tc/consumer_corner/standard-plan.html" target="_blank">醫務衞生局自願醫保計劃資訊網站</a></p>
     
                           </div>
                         </div>
