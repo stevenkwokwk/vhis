@@ -18,19 +18,19 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container p-3">
         <div class="row">
-            <div class="col-sm-3 col-12">
+            <div class="col-sm-3 col-12 mb-3 border rounded">
                 <div>
                     <p>假設投保人為非吸煙人士</p>
-                    <p>揀選性別（只可二選一）</p>
-                    <div class="form-check">
+                    <p class="fw-bold">1.揀選性別（只可二選一）</p>
+                    <div class="form-check form-check-inline">
                       <input class="btn-check" type="radio" name="flexRadioGender" id="flexRadioMale" onClick="updateSelectOptions(false);chartData=chartDataMale" checked>
                       <label class="btn btn-secondary" for="flexRadioMale">
                         男
                       </label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check form-check-inline">
                       <input class="btn-check" type="radio" name="flexRadioGender" id="flexRadioFemale" onClick="updateSelectOptions(false);chartData=chartDataFemale">
                       <label class="btn btn-secondary" for="flexRadioFemale">
                         女
@@ -39,7 +39,7 @@
                 </div>
                 <div>
                     <div class="dropdown">
-                        <p>揀選你想比較的保險公司標準計劃</p>
+                        <p>2.揀選你想比較的保險公司標準計劃</p>
                       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         揀選保險公司
                       </button>
@@ -90,7 +90,7 @@
                         備註
                       </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                       <div class="accordion-body">
                         <ul class="text-sm-start">
                             <li>Chubb 安達：安達自願醫保（標準）計劃 (安達人壽保險香港有限公司)</li>
