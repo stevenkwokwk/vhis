@@ -18,55 +18,61 @@
 </head>
 <body>
     <div class="container">
-        <span>揀選性別（只可二選一）</span>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioGender" id="flexRadioMale" onClick="updateSelectOptions(false);chartData=chartDataMale" checked>
-          <label class="form-check-label" for="flexRadioMale">
-            男
-          </label>
+        <div class="row">
+            <div class="col-sm-3 col-12">
+                <span>揀選性別（只可二選一）</span>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioGender" id="flexRadioMale" onClick="updateSelectOptions(false);chartData=chartDataMale" checked>
+                  <label class="form-check-label" for="flexRadioMale">
+                    男
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioGender" id="flexRadioFemale" onClick="updateSelectOptions(false);chartData=chartDataFemale">
+                  <label class="form-check-label" for="flexRadioFemale">
+                    女
+                  </label>
+                </div>
+                
+                <label for="planSelect">揀選你想比較的保險公司標準計劃</label>
+                <select id="planSelect" multiple size="4" onchange="drawChart()">
+                    <option value="Chubb 安達">Chubb 安達</option>
+                    <option value="Blue Cross 藍十字">Blue Cross 藍十字</option>
+                    <option value="FTLife 富通">FTLife 富通</option>
+                    <option value="Zurich 蘇黎世">Zurich 蘇黎世</option>
+                    <option value="YF Life 萬通">YF Life 萬通</option>
+                    <option value="Dah Sing 大新">Dah Sing 大新</option>
+                    <option value="BOC Life 中銀人壽">BOC Life 中銀人壽</option>
+                    <option value="BOC 中銀">BOC 中銀</option>
+                    <option value="Taiping Life 太平人壽">Taiping Life 太平人壽</option>
+                    <option value="China Taiping 中國太平">China Taiping 中國太平</option>
+                    <option value="Sun Life 永明">Sun Life 永明</option>
+                    <option value="Well Link Life 立橋人壽">Well Link Life 立橋人壽</option>
+                    <option value="MSIG">MSIG</option>
+                    <option value="Liberty 利寶">Liberty 利寶</option>
+                    <option value="Manulife 宏利">Manulife 宏利</option>
+                    <option value="Asia Insurance 亞洲保險">Asia Insurance 亞洲保險</option>
+                    <option value="Bupa 保柏">Bupa 保柏</option>
+                    <option value="Bowtie 保泰" selected>Bowtie 保泰</option>
+                    <option value="Prudential 保誠">Prudential 保誠</option>
+                    <option value="Cigna Worldwide 信諾環球">Cigna Worldwide 信諾環球</option>
+                    <option value="Bolttech 保特">Bolttech 保特</option>
+                    <option value="HSBC Life 滙豐">HSBC Life 滙豐</option>
+                    <option value="Hong Kong Life 香港人壽">Hong Kong Life 香港人壽</option>
+                    <option value="FWD 富衛人壽">FWD 富衛人壽</option>
+                    <option value="China Life 中國人壽">China Life 中國人壽</option>
+                    <option value="AIA 友邦">AIA 友邦</option>
+                    <option value="Avo 安我">Avo 安我</option>
+                    <option value="AXA 安盛">AXA 安盛</option>
+                    <option value="ZA Life 眾安人壽">ZA Life 眾安人壽</option>
+                </select>
+                <button id="selectAllButton">Select All</button>
+                <button id="deselectAllButton">Deselect All</button>
+            </div>
+            <div class="col-sm-9 col-12">
+                <div id="line_chart" style="width: 900px; height: 500px;"></div>
+            </div>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioGender" id="flexRadioFemale" onClick="updateSelectOptions(false);chartData=chartDataFemale">
-          <label class="form-check-label" for="flexRadioFemale">
-            女
-          </label>
-        </div>
-        
-        <label for="planSelect">揀選你想比較的保險公司標準計劃</label>
-        <select id="planSelect" multiple size="4" onchange="drawChart()">
-            <option value="Chubb 安達">Chubb 安達</option>
-            <option value="Blue Cross 藍十字">Blue Cross 藍十字</option>
-            <option value="FTLife 富通">FTLife 富通</option>
-            <option value="Zurich 蘇黎世">Zurich 蘇黎世</option>
-            <option value="YF Life 萬通">YF Life 萬通</option>
-            <option value="Dah Sing 大新">Dah Sing 大新</option>
-            <option value="BOC Life 中銀人壽">BOC Life 中銀人壽</option>
-            <option value="BOC 中銀">BOC 中銀</option>
-            <option value="Taiping Life 太平人壽">Taiping Life 太平人壽</option>
-            <option value="China Taiping 中國太平">China Taiping 中國太平</option>
-            <option value="Sun Life 永明">Sun Life 永明</option>
-            <option value="Well Link Life 立橋人壽">Well Link Life 立橋人壽</option>
-            <option value="MSIG">MSIG</option>
-            <option value="Liberty 利寶">Liberty 利寶</option>
-            <option value="Manulife 宏利">Manulife 宏利</option>
-            <option value="Asia Insurance 亞洲保險">Asia Insurance 亞洲保險</option>
-            <option value="Bupa 保柏">Bupa 保柏</option>
-            <option value="Bowtie 保泰" selected>Bowtie 保泰</option>
-            <option value="Prudential 保誠">Prudential 保誠</option>
-            <option value="Cigna Worldwide 信諾環球">Cigna Worldwide 信諾環球</option>
-            <option value="Bolttech 保特">Bolttech 保特</option>
-            <option value="HSBC Life 滙豐">HSBC Life 滙豐</option>
-            <option value="Hong Kong Life 香港人壽">Hong Kong Life 香港人壽</option>
-            <option value="FWD 富衛人壽">FWD 富衛人壽</option>
-            <option value="China Life 中國人壽">China Life 中國人壽</option>
-            <option value="AIA 友邦">AIA 友邦</option>
-            <option value="Avo 安我">Avo 安我</option>
-            <option value="AXA 安盛">AXA 安盛</option>
-            <option value="ZA Life 眾安人壽">ZA Life 眾安人壽</option>
-        </select>
-        <button id="selectAllButton">Select All</button>
-        <button id="deselectAllButton">Deselect All</button>
-        <div id="line_chart" style="width: 900px; height: 500px;"></div>
     </div>
     <script type="text/javascript" src="script.js"></script>
 </body>
