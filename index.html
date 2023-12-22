@@ -22,24 +22,25 @@
         <div class="row">
             <div class="col-sm-3 col-12">
                 <div>
-                    <span>揀選性別（只可二選一）</span>
+                    <p>揀選性別（只可二選一）</p>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioGender" id="flexRadioMale" onClick="updateSelectOptions(false);chartData=chartDataMale" checked>
-                      <label class="form-check-label" for="flexRadioMale">
+                      <input class="btn-check" type="radio" name="flexRadioGender" id="flexRadioMale" onClick="updateSelectOptions(false);chartData=chartDataMale" checked>
+                      <label class="btn btn-secondary" for="flexRadioMale">
                         男
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioGender" id="flexRadioFemale" onClick="updateSelectOptions(false);chartData=chartDataFemale">
-                      <label class="form-check-label" for="flexRadioFemale">
+                      <input class="btn-check" type="radio" name="flexRadioGender" id="flexRadioFemale" onClick="updateSelectOptions(false);chartData=chartDataFemale">
+                      <label class="btn btn-secondary" for="flexRadioFemale">
                         女
                       </label>
                     </div>
                 </div>
                 <div>
                     <div class="dropdown">
+                        <p>揀選你想比較的保險公司標準計劃</p>
                       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        Select Plans
+                        揀選保險公司
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><input type="checkbox" id="selectAll" onchange="selectAllCheckboxes(this,true)"> <label for="selectAll">選擇全部</label></li>
