@@ -22,7 +22,10 @@ function drawChart() {
         vAxis: {title: '保費'},
         series: getSeriesOptions(selectedPlans),
         curveType: 'function',
-        legend: { position: 'bottom' }
+        legend: { position: 'bottom' },
+        width: '100%',
+        height: getChartHeight(),
+        chartArea: { width: '80%' } 
     };
 
     var chart = new google.visualization.LineChart(document.getElementById('line_chart'));
@@ -113,5 +116,14 @@ function filterData(data, selectedPlanIndices) {
     }
     return filteredData;
 }
+
+function getChartHeight() {
+    var chartWidth = document.getElementById('line_chart').offsetWidth;
+    return chartWidth * 0.5625; // 16:9 aspect ratio
+}
+
+window.addEventListener('resize', function() {
+    drawChart();
+});
 
 
