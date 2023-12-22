@@ -66,6 +66,7 @@ function selectAllCheckboxes(source,selectBool) {
             checkbox.checked = source.checked;
         } else {
             checkbox.checked = false;
+            source.checked=false;
         }
     });
     drawChart();
