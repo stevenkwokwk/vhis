@@ -59,10 +59,14 @@ function getSeriesOptions(selectedPlanIndices) {
 }
 
 
-function selectAllCheckboxes(source) {
+function selectAllCheckboxes(source,selectBool) {
     var checkboxes = document.querySelectorAll('.planOption');
     checkboxes.forEach(function(checkbox) {
-        checkbox.checked = source.checked;
+        if (selectBool) {
+            checkbox.checked = source.checked;
+        } else {
+            checkbox.checked = false;
+        }
     });
     drawChart();
 }
