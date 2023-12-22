@@ -19,8 +19,8 @@ function drawChart() {
 
    var options = {
         title: 'Insurance Premiums by Age',
-        hAxis: {title: 'Age'},
-        vAxis: {title: 'Premium'},
+        hAxis: {title: '年齡'},
+        vAxis: {title: '保費'},
         series: getSeriesOptions(selectedPlans),
         curveType: 'function',
         legend: { position: 'bottom' }
