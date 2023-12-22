@@ -18,7 +18,6 @@ function drawChart() {
     var data = google.visualization.arrayToDataTable(filteredData);
 
    var options = {
-        title: 'Insurance Premiums by Age',
         hAxis: {title: '年齡'},
         vAxis: {title: '保費'},
         series: getSeriesOptions(selectedPlans),
