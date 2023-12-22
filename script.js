@@ -75,26 +75,6 @@ function selectAllCheckboxes(source,selectBool) {
     drawChart();
 }
 
-
-document.getElementById('selectAllButton').addEventListener('click', function() {
-    updateSelectOptions(true);
-});
-
-document.getElementById('deselectAllButton').addEventListener('click', function() {
-    updateSelectOptions(false);
-});
-
-function updateSelectOptions(selectAll) {
-    var selectBox = document.getElementById('planSelect');
-    for (var i = 0; i < selectBox.options.length; i++) {
-        selectBox.options[i].selected = selectAll;
-    }
-    drawChart();
-}
-
-
-
-
 function filterData(data, selectedPlanIndices) {
     var headers = data[0];
     var filteredHeaders = ['Age'];
