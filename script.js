@@ -1,3 +1,5 @@
+var selectAllElement=document.querySelector("#selectAll");
+
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
