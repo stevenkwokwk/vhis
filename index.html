@@ -65,6 +65,9 @@
 
         
     </style>
+    <script>
+        selectAllElement=document.querySelector("#selectAll");
+    </script>
 </head>
 <body>
     <div class="container p-3">
@@ -74,11 +77,11 @@
                     <p>假設投保人為非吸煙人士</p>
                     <p class="fw-bold">1.揀選性別（只可二選一）</p>
                     <div class="form-check form-check-inline m-0 p-0">
-                      <input class="btn-check" type="radio" name="flexRadioGender" id="flexRadioMale" onClick="selectAllCheckboxes(this,false);chartData=chartDataMale" checked>
+                      <input class="btn-check" type="radio" name="flexRadioGender" id="flexRadioMale" onClick="selectAllCheckboxes(selectAllElement,false);chartData=chartDataMale" checked>
                       <label class="btn btn-secondary" for="flexRadioMale">
                         男
                       </label>
-                      <input class="btn-check" type="radio" name="flexRadioGender" id="flexRadioFemale" onClick="selectAllCheckboxes(this,false);chartData=chartDataFemale">
+                      <input class="btn-check" type="radio" name="flexRadioGender" id="flexRadioFemale" onClick="selectAllCheckboxes(selectAllElement,false);chartData=chartDataFemale">
                       <label class="btn btn-secondary" for="flexRadioFemale">
                         女
                       </label>
