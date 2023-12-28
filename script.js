@@ -12,21 +12,26 @@ var planColors = {
     // "PlanName": "ColorCode"
 };
 
+var filteredDataGlobal;
 
 function drawChart() {
     var selectedPlans = getSelectedPlans();
     var filteredData = filterData(chartData, selectedPlans);
+    filteredDataGlobal=filteredData;
+    //find the max value of the age 99
+    var maxValue = Math.max(...filteredData[100]);
+    var vAxisMaxValue=Math.ceil(maxValue/5000)*5000;
 
     var data = google.visualization.arrayToDataTable(filteredData);
 
    var options = {
         hAxis: {title: '年齡'},
         vAxis: {
-            title: '保費',
+            title: '每年保費',
             format: 'short', // This will format the numbers with a K for thousand, M for million, etc.
             viewWindow: {
                 min: 0,
-                max: 30000 // or a suitable maximum value based on your data
+                max: vAxisMaxValue // or a suitable maximum value based on your data
             },
             gridlines: { count: 6 }
         },
@@ -46,13 +51,25 @@ function getSelectedPlans() {
     var checkboxes = document.querySelectorAll('.planOption');
     var selectedPlanIndices = [];
 
-    checkboxes.forEach(function(checkbox, index) {
+    checkboxes.forEach(function(checkbox) {
         if (checkbox.checked) {
-            selectedPlanIndices.push(index);
+            var label = document.querySelector('label[for="' + checkbox.id + '"]');
+            if (label) {
+                var planName = label.textContent.trim();
+                var columnIndex = findColumnIndexByPlanName(planName);
+                if (columnIndex !== -1) {
+                    selectedPlanIndices.push(columnIndex);
+                }
+            }
         }
     });
 
     return selectedPlanIndices;
+}
+
+function findColumnIndexByPlanName(planName) {
+    var headers = chartData[0];
+    return headers.indexOf(planName)-1;
 }
 
 
@@ -80,6 +97,7 @@ function selectAllCheckboxes(source,selectBool) {
         } else {
             checkbox.checked = false;
             source.checked=false;
+            document.querySelector("#selectAll").checked=false;
         }
     });
     drawChart();
@@ -116,4 +134,6 @@ window.addEventListener('resize', function() {
     drawChart();
 });
 
-
+function preventDropdownClose(event) {
+    event.stopPropagation();
+}
