@@ -28,7 +28,7 @@
         }
 
         .btn-check:active+.btn-secondary, .btn-check:checked+.btn-secondary, .btn-secondary.active, .btn-secondary:active, .show>.btn-secondary.dropdown-toggle,.btn-secondary:hover {
-            color: #00;
+            color: #000;
             background-color: #fe0568;
             border-color: #fe0568;
         }
@@ -66,7 +66,7 @@
 <body>
     <div class="container p-3">
         <div class="row">
-            <div class="col-sm-3 col-12 mb-3 border rounded bg-light border-0 p-3">
+            <div class="col-12 mb-3 border rounded bg-light border-0 p-3">
                 <div class="mb-3">
                     <p>假設投保人為非吸煙人士</p>
                     <p class="fw-bold">1.揀選性別（只可二選一）</p>
@@ -88,42 +88,42 @@
                         揀選保險公司
                       </button>
                       <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
-                        <li><input type="checkbox" id="selectAll" onchange="selectAllCheckboxes(this,true)"> <label for="selectAll">選擇全部</label></li>
-                        <li><input type="checkbox" id="deselectAll" onchange="selectAllCheckboxes(this,false)"> <label for="deselectAll">全部清除</label></li>
-                        <li><input type="checkbox" id="Chubb" class="planOption" onchange="drawChart()"> <label for="Chubb">Chubb 安達</label></li>
-                        <li><input type="checkbox" id="BlueCross" class="planOption" onchange="drawChart()"> <label for="BlueCross">Blue Cross 藍十字</label></li>
-                        <li><input type="checkbox" id="FTLife" class="planOption" onchange="drawChart()"> <label for="FTLife">FTLife 富通</label></li>
-                        <li><input type="checkbox" id="Zurich" class="planOption" onchange="drawChart()"> <label for="Zurich">Zurich 蘇黎世</label></li>
-                        <li><input type="checkbox" id="YFLife" class="planOption" onchange="drawChart()"> <label for="YFLife">YF Life 萬通</label></li>
-                        <li><input type="checkbox" id="DahSing" class="planOption" onchange="drawChart()"> <label for="DahSing">Dah Sing 大新</label></li>
-                        <li><input type="checkbox" id="BOCLife" class="planOption" onchange="drawChart()"> <label for="BOCLife">BOC Life 中銀人壽</label></li>
-                        <li><input type="checkbox" id="BOC" class="planOption" onchange="drawChart()"> <label for="BOC">BOC 中銀</label></li>
-                        <li><input type="checkbox" id="TaipingLife" class="planOption" onchange="drawChart()"> <label for="TaipingLife">Taiping Life 太平人壽</label></li>
-                        <li><input type="checkbox" id="ChinaTaiping" class="planOption" onchange="drawChart()"> <label for="ChinaTaiping">China Taiping 中國太平</label></li>
-                        <li><input type="checkbox" id="SunLife" class="planOption" onchange="drawChart()"> <label for="SunLife">Sun Life 永明</label></li>
-                        <li><input type="checkbox" id="WellLinkLife" class="planOption" onchange="drawChart()"> <label for="WellLinkLife">Well Link Life 立橋人壽</label></li>
-                        <li><input type="checkbox" id="MSIG" class="planOption" onchange="drawChart()"> <label for="MSIG">MSIG</label></li>
-                        <li><input type="checkbox" id="Liberty" class="planOption" onchange="drawChart()"> <label for="Liberty">Liberty 利寶</label></li>
-                        <li><input type="checkbox" id="Manulife" class="planOption" onchange="drawChart()"> <label for="Manulife">Manulife 宏利</label></li>
-                        <li><input type="checkbox" id="AsiaInsurance" class="planOption" onchange="drawChart()"> <label for="AsiaInsurance">Asia Insurance 亞洲保險</label></li>
-                        <li><input type="checkbox" id="Bupa" class="planOption" onchange="drawChart()"> <label for="Bupa">Bupa 保柏</label></li>
-                        <li><input type="checkbox" id="Bowtie" class="planOption" onchange="drawChart()"> <label for="Bowtie" class="color:#fe0568;">Bowtie 保泰</label></li>
-                        <li><input type="checkbox" id="Prudential" class="planOption" onchange="drawChart()"> <label for="Prudential">Prudential 保誠</label></li>
-                        <li><input type="checkbox" id="CignaWorldwide" class="planOption" onchange="drawChart()"> <label for="CignaWorldwide">Cigna Worldwide 信諾環球</label></li>
-                        <li><input type="checkbox" id="Bolttech" class="planOption" onchange="drawChart()"> <label for="Bolttech">Bolttech 保特</label></li>
-                        <li><input type="checkbox" id="HSBCLife" class="planOption" onchange="drawChart()"> <label for="HSBCLife">HSBC Life 滙豐</label></li>
-                        <li><input type="checkbox" id="HongKongLife" class="planOption" onchange="drawChart()"> <label for="HongKongLife">Hong Kong Life 香港人壽</label></li>
-                        <li><input type="checkbox" id="FWD" class="planOption" onchange="drawChart()"> <label for="FWD">FWD 富衛人壽</label></li>
-                        <li><input type="checkbox" id="ChinaLife" class="planOption" onchange="drawChart()"> <label for="ChinaLife">China Life 中國人壽</label></li>
-                        <li><input type="checkbox" id="AIA" class="planOption" onchange="drawChart()"> <label for="AIA">AIA 友邦</label></li>
-                        <li><input type="checkbox" id="Avo" class="planOption" onchange="drawChart()"> <label for="Avo">Avo 安我</label></li>
-                        <li><input type="checkbox" id="AXA" class="planOption" onchange="drawChart()"> <label for="AXA">AXA 安盛</label></li>
-                        <li><input type="checkbox" id="ZALife" class="planOption" onchange="drawChart()"> <label for="ZALife">ZA Life 眾安人壽</label></li>
+                        <li><input type="checkbox" id="selectAll" onchange="selectAllCheckboxes(this,true)"> <label  onclick="preventDropdownClose(event)" for="selectAll">選擇全部</label></li>
+                        <li><input type="checkbox" id="deselectAll" onchange="selectAllCheckboxes(this,false)"> <label onclick="preventDropdownClose(event)" for="deselectAll">全部清除</label></li>
+                        <li><input type="checkbox" id="AIA" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="AIA">AIA 友邦</label></li>
+                        <li><input type="checkbox" id="AsiaInsurance" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="AsiaInsurance">Asia Insurance 亞洲保險</label></li>
+                        <li><input type="checkbox" id="Avo" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Avo">Avo 安我</label></li>
+                        <li><input type="checkbox" id="AXA" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="AXA">AXA 安盛</label></li>
+                        <li><input type="checkbox" id="BlueCross" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="BlueCross">Blue Cross 藍十字</label></li>
+                        <li><input type="checkbox" id="BOC" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="BOC">BOC 中銀</label></li>
+                        <li><input type="checkbox" id="BOCLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="BOCLife">BOC Life 中銀人壽</label></li>
+                        <li><input type="checkbox" id="Bolttech" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Bolttech">Bolttech 保特</label></li>
+                        <li><input type="checkbox" id="Bowtie" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Bowtie" class="color:#fe0568;">Bowtie 保泰</label></li>
+                        <li><input type="checkbox" id="Bupa" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Bupa">Bupa 保柏</label></li>
+                        <li><input type="checkbox" id="ChinaLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="ChinaLife">China Life 中國人壽</label></li>
+                        <li><input type="checkbox" id="ChinaTaiping" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="ChinaTaiping">China Taiping 中國太平</label></li>
+                        <li><input type="checkbox" id="Chubb" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Chubb">Chubb 安達</label></li>
+                        <li><input type="checkbox" id="CignaWorldwide" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="CignaWorldwide">Cigna Worldwide 信諾環球</label></li>
+                        <li><input type="checkbox" id="DahSing" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="DahSing">Dah Sing 大新</label></li>
+                        <li><input type="checkbox" id="FTLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="FTLife">FTLife 富通</label></li>
+                        <li><input type="checkbox" id="FWD" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="FWD">FWD 富衛人壽</label></li>
+                        <li><input type="checkbox" id="HongKongLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="HongKongLife">Hong Kong Life 香港人壽</label></li>
+                        <li><input type="checkbox" id="HSBCLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="HSBCLife">HSBC Life 滙豐</label></li>
+                        <li><input type="checkbox" id="Liberty" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Liberty">Liberty 利寶</label></li>
+                        <li><input type="checkbox" id="Manulife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Manulife">Manulife 宏利</label></li>
+                        <li><input type="checkbox" id="MSIG" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="MSIG">MSIG</label></li>
+                        <li><input type="checkbox" id="Prudential" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Prudential">Prudential 保誠</label></li>
+                        <li><input type="checkbox" id="SunLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="SunLife">Sun Life 永明</label></li>
+                        <li><input type="checkbox" id="TaipingLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="TaipingLife">Taiping Life 太平人壽</label></li>
+                        <li><input type="checkbox" id="WellLinkLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="WellLinkLife">Well Link Life 立橋人壽</label></li>
+                        <li><input type="checkbox" id="YFLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="YFLife">YF Life 萬通</label></li>
+                        <li><input type="checkbox" id="ZALife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="ZALife">ZA Life 眾安人壽</label></li>
+                        <li><input type="checkbox" id="Zurich" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Zurich">Zurich 蘇黎世</label></li>
                       </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-9 col-12">
+            <div class="col-12">
                 <div id="line_chart" style="width: 100%;"></div>
             </div>
         </div>
@@ -140,35 +140,35 @@
                       <div class="accordion-body">
                           <p>以下為各保險計劃的正式名稱</p>
                         <ul class="text-sm-start">
-                            <li>Chubb 安達：安達自願醫保（標準）計劃 (安達人壽保險香港有限公司)</li>
-                            <li>Blue Cross 藍十字：「只衛您」標準自願醫保計劃</li>
-                            <li>FTLife 富通：「卓康保」醫療保障計劃</li>
-                            <li>Zurich 蘇黎世：「智選守護」自願醫療保障計劃</li>
-                            <li>YF Life 萬通：「稅」優惠醫療計劃</li>
-                            <li>Dah Sing 大新：大新保險「尚護康」自願醫保標準計劃</li>
-                            <li>BOC Life 中銀人壽：中銀人壽標準自願醫保</li>
-                            <li>BOC 中銀：中銀標準自願醫保計劃認可產品</li>
-                            <li>Taiping Life 太平人壽：太平人壽自願醫保標準計劃</li>
-                            <li>China Taiping 中國太平：太平自願醫療標準保險計劃</li>
-                            <li>Sun Life 永明：永明港健康醫療保</li>
-                            <li>Well Link Life 立橋人壽：立安心自願醫保標準計劃</li>
-                            <li>MSIG："自願醫保計劃-適健保"</li>
-                            <li>Liberty 利寶：利寶國際自願醫保標準計劃</li>
-                            <li>Manulife 宏利：宏利愛守護自願醫保標準計劃</li>
-                            <li>Asia Insurance 亞洲保險：延愛</li>
-                            <li>Bupa 保柏：保柏自願醫保計劃</li>
-                            <li>Bowtie 保泰：保泰自願醫保 - 標準計劃</li>
-                            <li>Prudential 保誠：保誠自主醫保計劃</li>
-                            <li>Cigna Worldwide 信諾環球：信諾自願醫保系列－標準計劃</li>
-                            <li>Bolttech 保特：智適簡自願醫療保險計劃</li>
-                            <li>HSBC Life 滙豐：滙豐自願醫保標準計劃</li>
-                            <li>Hong Kong Life 香港人壽：摯健樂」醫療計劃 – 基本</li>
-                            <li>FWD 富衛人壽：確衛您醫療計劃</li>
-                            <li>China Life 中國人壽：衛您健康醫療保險計劃</li>
-                            <li>AIA 友邦：AIA 自願醫保標準計劃</li>
-                            <li>Avo 安我：Avo自願醫保（標準）計劃</li>
-                            <li>AXA 安盛：AXA安盛守慧醫療保障 (安盛保險（百慕達）有限公司)</li>
-                            <li>ZA Life 眾安人壽：ZA 自願醫保</li>
+                          <li>AIA 友邦：AIA 自願醫保標準計劃</li>
+                          <li>Asia Insurance 亞洲保險：延愛</li>
+                          <li>Avo 安我：Avo自願醫保（標準）計劃</li>
+                          <li>AXA 安盛：AXA安盛守慧醫療保障 (安盛保險（百慕達）有限公司)</li>
+                          <li>Blue Cross 藍十字：「只衛您」標準自願醫保計劃</li>
+                          <li>BOC 中銀：中銀標準自願醫保計劃認可產品</li>
+                          <li>BOC Life 中銀人壽：中銀人壽標準自願醫保</li>
+                          <li>Bolttech 保特：智適簡自願醫療保險計劃</li>
+                          <li>Bowtie 保泰：保泰自願醫保 - 標準計劃</li>
+                          <li>Bupa 保柏：保柏自願醫保計劃</li>
+                          <li>China Life 中國人壽：衛您健康醫療保險計劃</li>
+                          <li>China Taiping 中國太平：太平自願醫療標準保險計劃</li>
+                          <li>Chubb 安達：安達自願醫保（標準）計劃 (安達人壽保險香港有限公司)</li>
+                          <li>Cigna Worldwide 信諾環球：信諾自願醫保系列－標準計劃</li>
+                          <li>Dah Sing 大新：大新保險「尚護康」自願醫保標準計劃</li>
+                          <li>FTLife 富通：「卓康保」醫療保障計劃</li>
+                          <li>FWD 富衛人壽：確衛您醫療計劃</li>
+                          <li>Hong Kong Life 香港人壽：摯健樂」醫療計劃 – 基本</li>
+                          <li>HSBC Life 滙豐：滙豐自願醫保標準計劃</li>
+                          <li>Liberty 利寶：利寶國際自願醫保標準計劃</li>
+                          <li>Manulife 宏利：宏利愛守護自願醫保標準計劃</li>
+                          <li>MSIG："自願醫保計劃-適健保"</li>
+                          <li>Prudential 保誠：保誠自主醫保計劃</li>
+                          <li>Sun Life 永明：永明港健康醫療保</li>
+                          <li>Taiping Life 太平人壽：太平人壽自願醫保標準計劃</li>
+                          <li>Well Link Life 立橋人壽：立安心自願醫保標準計劃</li>
+                          <li>YF Life 萬通：「稅」優惠醫療計劃</li>
+                          <li>ZA Life 眾安人壽：ZA 自願醫保</li>
+                          <li>Zurich 蘇黎世：「智選守護」自願醫療保障計劃</li>
                         </ul>
                           <p>資料來源:<a href="https://www.vhis.gov.hk/tc/consumer_corner/standard-plan.html" target="_blank">醫務衞生局自願醫保計劃資訊網站</a></p>
 
