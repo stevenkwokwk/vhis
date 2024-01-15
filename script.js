@@ -4,7 +4,7 @@ google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
 
-var chartData=chartDataFemale;
+var chartData=chartDataMale;
 
 var planColors = {
     "Bowtie 保泰": "#ff0068",
