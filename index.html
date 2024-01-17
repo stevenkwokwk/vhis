@@ -98,7 +98,7 @@
                         <li><input type="checkbox" id="BOC" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="BOC">BOC 中銀</label></li>
                         <li><input type="checkbox" id="BOCLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="BOCLife">BOC Life 中銀人壽</label></li>
                         <li><input type="checkbox" id="Bolttech" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Bolttech">Bolttech 保特</label></li>
-                        <li><input type="checkbox" id="Bowtie" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Bowtie" class="color:#fe0568;">Bowtie 保泰</label></li>
+                        <li><input type="checkbox" id="Bowtie" class="planOption" onchange="drawChart()" checked> <label onclick="preventDropdownClose(event)" for="Bowtie" class="color:#fe0568;">Bowtie 保泰</label></li>
                         <li><input type="checkbox" id="Bupa" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Bupa">Bupa 保柏</label></li>
                         <li><input type="checkbox" id="ChinaLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="ChinaLife">China Life 中國人壽</label></li>
                         <li><input type="checkbox" id="ChinaTaiping" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="ChinaTaiping">China Taiping 中國太平</label></li>
@@ -138,39 +138,45 @@
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                       <div class="accordion-body">
-                          <p>以下為各保險計劃的正式名稱</p>
-                        <ul class="text-sm-start">
-                          <li>AIA 友邦：AIA 自願醫保標準計劃</li>
-                          <li>Asia Insurance 亞洲保險：延愛</li>
-                          <li>Avo 安我：Avo自願醫保（標準）計劃</li>
-                          <li>AXA 安盛：AXA安盛守慧醫療保障 (安盛保險（百慕達）有限公司)</li>
-                          <li>Blue Cross 藍十字：「只衛您」標準自願醫保計劃</li>
-                          <li>BOC 中銀：中銀標準自願醫保計劃認可產品</li>
-                          <li>BOC Life 中銀人壽：中銀人壽標準自願醫保</li>
-                          <li>Bolttech 保特：智適簡自願醫療保險計劃</li>
-                          <li>Bowtie 保泰：保泰自願醫保 - 標準計劃</li>
-                          <li>Bupa 保柏：保柏自願醫保計劃</li>
-                          <li>China Life 中國人壽：衛您健康醫療保險計劃</li>
-                          <li>China Taiping 中國太平：太平自願醫療標準保險計劃</li>
-                          <li>Chubb 安達：安達自願醫保（標準）計劃 (安達人壽保險香港有限公司)</li>
-                          <li>Cigna Worldwide 信諾環球：信諾自願醫保系列－標準計劃</li>
-                          <li>Dah Sing 大新：大新保險「尚護康」自願醫保標準計劃</li>
-                          <li>FTLife 富通：「卓康保」醫療保障計劃</li>
-                          <li>FWD 富衛人壽：確衛您醫療計劃</li>
-                          <li>Hong Kong Life 香港人壽：摯健樂」醫療計劃 – 基本</li>
-                          <li>HSBC Life 滙豐：滙豐自願醫保標準計劃</li>
-                          <li>Liberty 利寶：利寶國際自願醫保標準計劃</li>
-                          <li>Manulife 宏利：宏利愛守護自願醫保標準計劃</li>
-                          <li>MSIG："自願醫保計劃-適健保"</li>
-                          <li>Prudential 保誠：保誠自主醫保計劃</li>
-                          <li>Sun Life 永明：永明港健康醫療保</li>
-                          <li>Taiping Life 太平人壽：太平人壽自願醫保標準計劃</li>
-                          <li>Well Link Life 立橋人壽：立安心自願醫保標準計劃</li>
-                          <li>YF Life 萬通：「稅」優惠醫療計劃</li>
-                          <li>ZA Life 眾安人壽：ZA 自願醫保</li>
-                          <li>Zurich 蘇黎世：「智選守護」自願醫療保障計劃</li>
+                        <p>1. 以下為各保險計劃的正式名稱</p>
+                        <ul>
+                          <li style="list-style-type:disc">AIA 友邦：AIA自願醫保標準計劃</li>
+                          <li style="list-style-type:disc">Asia Insurance 亞洲保險：延愛</li>
+                          <li style="list-style-type:disc">Avo 安我：Avo自願醫保（標準）計劃</li>
+                          <li style="list-style-type:disc">AXA 安盛：AXA安盛守慧醫療保障</li>
+                          <li style="list-style-type:disc">Blue Cross 藍十字：「只衛您」標準自願醫保計劃</li>
+                          <li style="list-style-type:disc">BOC 中銀：中銀標準自願醫保計劃認可產品</li>
+                          <li style="list-style-type:disc">BOC Life 中銀人壽：中銀人壽標準自願醫保</li>
+                          <li style="list-style-type:disc">Bolttech 保特：智適簡自願醫療保險計劃</li>
+                          <li style="list-style-type:disc">Bowtie 保泰：保泰自願醫保 - 標準計劃</li>
+                          <li style="list-style-type:disc">Bupa 保柏：保柏自願醫保計劃</li>
+                          <li style="list-style-type:disc">China Life 中國人壽：衛您健康醫療保險計劃</li>
+                          <li style="list-style-type:disc">China Taiping 中國太平：太平自願醫療標準保險計劃</li>
+                          <li style="list-style-type:disc">Chubb 安達：安達自願醫保（標準）計劃</li>
+                          <li style="list-style-type:disc">Cigna Worldwide 信諾環球：信諾自願醫保系列－標準計劃</li>
+                          <li style="list-style-type:disc">Dah Sing 大新：大新保險「尚護康」自願醫保標準計劃</li>
+                          <li style="list-style-type:disc">FTLife 富通：「卓康保」醫療保障計劃</li>
+                          <li style="list-style-type:disc">FWD 富衛人壽：確衛您醫療計劃</li>
+                          <li style="list-style-type:disc">Hong Kong Life 香港人壽：「摯健樂」醫療計劃 &ndash; 基本</li>
+                          <li style="list-style-type:disc">HSBC Life 滙豐：滙豐自願醫保標準計劃</li>
+                          <li style="list-style-type:disc">Liberty 利寶：利寶國際自願醫保標準計劃</li>
+                          <li style="list-style-type:disc">Manulife 宏利：宏利愛守護自願醫保標準計劃</li>
+                          <li style="list-style-type:disc">MSIG：自願醫保計劃-適健保</li>
+                          <li style="list-style-type:disc">Prudential 保誠：保誠自主醫保計劃</li>
+                          <li style="list-style-type:disc">Sun Life 永明：永明港健康醫療保</li>
+                          <li style="list-style-type:disc">Taiping Life 太平人壽：太平人壽自願醫保標準計劃</li>
+                          <li style="list-style-type:disc">Well Link Life 立橋人壽：立安心自願醫保標準計劃</li>
+                          <li style="list-style-type:disc">YF Life 萬通：「稅」優惠醫療計劃</li>
+                          <li style="list-style-type:disc">ZA Life 眾安人壽：ZA 自願醫保</li>
+                          <li style="list-style-type:disc">Zurich 蘇黎世：「智選守護」自願醫療保障計劃</li>
                         </ul>
-                          <p>資料來源:<a href="https://www.vhis.gov.hk/tc/consumer_corner/standard-plan.html" target="_blank">醫務衞生局自願醫保計劃資訊網站</a></p>
+
+                        <p>2. 上述保費以非吸煙人士計算。年齡是指實際年齡，而非下次生日年齡。除Bowtie以月繳保費化作年繳保費計算外，其他計劃則直接以年繳保費顯示。一般而言，80至99歲保費只供續保之用。</p>
+
+                        <p>3. 保柏自願醫保計劃保費只適用於保單生效時年齡介乎0至59歲之受保人「智選守護」自願醫療保障計劃的保費只適用於保單生效時年齡介乎0至64歲之受保人。</p>
+
+                        <p>4. 資料來源:<a href="https://www.vhis.gov.hk/tc/consumer_corner/standard-plan.html" style="text-decoration:none"><u>醫務衞生局自願醫保計劃資訊網站</u></a>。數據截至2024年1月15日。</p>
+
 
                       </div>
                     </div>
