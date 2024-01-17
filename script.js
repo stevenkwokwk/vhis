@@ -28,7 +28,7 @@ function drawChart() {
         hAxis: {title: '年齡'},
         vAxis: {
             title: '每年保費',
-            format: 'short', // This will format the numbers with a K for thousand, M for million, etc.
+            format: 'HK$#,###', // This will format the numbers with a K for thousand, M for million, etc.
             viewWindow: {
                 min: 0,
                 max: vAxisMaxValue // or a suitable maximum value based on your data
@@ -36,7 +36,7 @@ function drawChart() {
             gridlines: { count: 6 }
         },
         series: getSeriesOptions(selectedPlans),
-        curveType: 'function',
+        curveType: 'none',
         legend: { position: 'bottom' },
         width: '100%',
         height: getChartHeight(),
@@ -137,3 +137,5 @@ window.addEventListener('resize', function() {
 function preventDropdownClose(event) {
     event.stopPropagation();
 }
+
+drawChart();
