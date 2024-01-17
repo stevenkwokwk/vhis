@@ -40,7 +40,7 @@ function drawChart() {
         legend: { position: 'bottom' },
         width: '100%',
         height: getChartHeight(),
-        chartArea: { width: '80%' } 
+        chartArea: { width: '60%' } 
     };
 
     var chart = new google.visualization.LineChart(document.getElementById('line_chart'));
