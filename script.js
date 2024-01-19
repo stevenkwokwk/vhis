@@ -1,10 +1,6 @@
-var selectAllElement=document.querySelector("#selectAll");
-
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
-
-
-var chartData=chartDataMale;
+var chartDataMale=[];
+var chartDataFemale=[];
+var chartData=[];
 
 var planColors = {
     "Bowtie 保泰": "#ff0068",
@@ -13,6 +9,9 @@ var planColors = {
 };
 
 var filteredDataGlobal;
+var selectAllElement=document.querySelector("#selectAll");
+
+
 
 function drawChart() {
     var selectedPlans = getSelectedPlans();
@@ -28,7 +27,7 @@ function drawChart() {
         hAxis: {title: '年齡'},
         vAxis: {
             title: '每年保費',
-            format: 'HK$#,###', // This will format the numbers with a K for thousand, M for million, etc.
+            format: '$#,###', // This will format the numbers with a K for thousand, M for million, etc.
             viewWindow: {
                 min: 0,
                 max: vAxisMaxValue // or a suitable maximum value based on your data
@@ -40,7 +39,7 @@ function drawChart() {
         legend: { position: 'bottom' },
         width: '100%',
         height: getChartHeight(),
-        chartArea: { width: '60%' } 
+        chartArea: {  left: '15%',width: '85%' } 
     };
 
     var chart = new google.visualization.LineChart(document.getElementById('line_chart'));
@@ -130,12 +129,83 @@ function getChartHeight() {
     return chartWidth * 0.5625; // 16:9 aspect ratio
 }
 
-window.addEventListener('resize', function() {
-    drawChart();
-});
-
 function preventDropdownClose(event) {
     event.stopPropagation();
 }
 
-drawChart();
+function parseCSVRow(row) {
+    const result = [];
+    let current = '';
+    let inQuotes = false;
+
+    for (let i = 0; i < row.length; i++) {
+        const char = row[i];
+
+        if (char === '"' && row[i + 1] === '"') {
+            // Handle escaped quotes
+            current += '"';
+            i++; // Skip the next quote
+        } else if (char === '"') {
+            // Toggle inQuotes state
+            inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+            // End of a field
+            result.push(current.trim());
+            current = '';
+        } else {
+            current += char;
+        }
+    }
+
+    // Add the last field
+    result.push(current.trim());
+
+    return result.map(value => {
+        // Remove quotation marks and commas for numbers
+        const cleanedValue = value.replace(/["']/g, '').trim();
+        const numericValue = cleanedValue.replace(/,/g, '');
+        return isNaN(numericValue) ? cleanedValue : Number(numericValue);
+    });
+}
+
+async function fetchAndParseCSV(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const csvText = await response.text();
+        const rows = csvText.trim().split('\n');
+        return rows.map(parseCSVRow);
+    } catch (error) {
+        console.error('Error fetching or parsing CSV:', error);
+        return null;
+    }
+}
+
+
+const femaleCsvUrl = 'chartDataFemale.csv'; 
+fetchAndParseCSV(femaleCsvUrl).then(data => {
+    if (data) {        
+        chartDataFemale=data;
+    }
+});
+
+const maleCsvUrl = 'chartDataMale.csv'; 
+fetchAndParseCSV(maleCsvUrl).then(data => {
+    if (data) {        
+        chartDataMale=data;      
+        chartData=chartDataMale;
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        window.addEventListener('resize', function() {
+            drawChart();
+        });
+        
+        drawChart();
+    }
+});
+
+
+
