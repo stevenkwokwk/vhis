@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+
+    <title>自願醫保標準計劃保費比較</title>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+        body {
+            color: rgb(42, 46, 66);
+            font-family: Gilroy, "Noto Sans TC", Helvetica, Arial, sans-serif;
+            font-weight: 400;
+            line-height: 1.5rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-secondary {
+            color: #333;
+            background-color: #fff;
+            border-color: #fe0568;
+        }
+
+        .btn-check:active+.btn-secondary, .btn-check:checked+.btn-secondary, .btn-secondary.active, .btn-secondary:active, .show>.btn-secondary.dropdown-toggle,.btn-secondary:hover {
+            color: #000;
+            background-color: #fe0568;
+            border-color: #fe0568;
+        }
+
+        ul.dropdown-menu {
+            width: 100%;
+        }
+
+        ul.dropdown-menu li:hover {
+            background-color: #F9F9F9;
+        }
+
+        ul.dropdown-menu label {
+            display: inline;
+        }               
+
+        .accordion-button {
+            font-size: 0.875rem;
+        }
+
+        #collapseOne {
+            line-height: 1rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.035em;
+        }
+
+        .accordion-button:focus {
+            border:0;
+            box-shadow: unset;
+        }
+        
+        div[id*='google-visualization-errors'] {
+            display:none;
+        }
+
+        @media screen and (max-width: 576px) {
+            ul.dropdown-menu {
+                transform: translate3d(0px, -50px, 0px)!important;
+                font-size: 14px;
+            }
+
+        }
+
+        
+
+        
+    </style>
+</head>
+<body>
+    <div>
+        <div class="row">
+            <div class="col-12 mb-3 border rounded bg-light border-0 p-3">
+                <div class="mb-3">
+                    <p>假設投保人為非吸煙人士</p>
+                    <p class="fw-bold">1.揀選性別（只可二選一）</p>
+                    <div class="form-check form-check-inline m-0 p-0">
+                      <input class="btn-check" type="radio" name="flexRadioGender" id="flexRadioMale" onClick="selectAllCheckboxes(selectAllElement,false);chartData=chartDataMale" checked>
+                      <label class="btn btn-secondary" for="flexRadioMale">
+                        男
+                      </label>
+                      <input class="btn-check" type="radio" name="flexRadioGender" id="flexRadioFemale" onClick="selectAllCheckboxes(selectAllElement,false);chartData=chartDataFemale">
+                      <label class="btn btn-secondary" for="flexRadioFemale">
+                        女
+                      </label>
+                    </div>
+                </div>
+                <div>
+                    <div class="dropdown">
+                        <p class="fw-bold">2.揀選你想比較的保險公司標準計劃</p>
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        揀選保險公司
+                      </button>
+                      <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
+                        <div class="row">
+                            <div class="col-6">
+                                <li><input type="checkbox" id="selectAll" onchange="selectAllCheckboxes(this,true)"> <label  onclick="preventDropdownClose(event)" for="selectAll">選擇全部</label></li>
+                                <li><input type="checkbox" id="deselectAll" onchange="selectAllCheckboxes(this,false)"> <label onclick="preventDropdownClose(event)" for="deselectAll">全部清除</label></li>
+                                <li><input type="checkbox" id="AIA" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="AIA">AIA 友邦</label></li>
+                                <li><input type="checkbox" id="AsiaInsurance" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="AsiaInsurance">Asia Insurance 亞洲保險</label></li>
+                                <li><input type="checkbox" id="Avo" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Avo">Avo 安我</label></li>
+                                <li><input type="checkbox" id="AXA" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="AXA">AXA 安盛</label></li>
+                                <li><input type="checkbox" id="BlueCross" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="BlueCross">Blue Cross 藍十字</label></li>
+                                <li><input type="checkbox" id="BOC" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="BOC">BOC Group 中銀集團</label></li>
+                                <li><input type="checkbox" id="BOCLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="BOCLife">BOC Life 中銀人壽</label></li>
+                                <li><input type="checkbox" id="Bolttech" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Bolttech">Bolttech 保特</label></li>
+                                <li><input type="checkbox" id="Bowtie" class="planOption" onchange="drawChart()" checked> <label onclick="preventDropdownClose(event)" for="Bowtie" class="color:#fe0568;">Bowtie 保泰</label></li>
+                                <li><input type="checkbox" id="Bupa" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Bupa">Bupa 保柏</label></li>
+                                <li><input type="checkbox" id="ChinaLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="ChinaLife">China Life 中國人壽</label></li>
+                                <li><input type="checkbox" id="ChinaTaiping" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="ChinaTaiping">China Taiping 中國太平</label></li>
+                                <li><input type="checkbox" id="Chubb" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Chubb">Chubb 安達</label></li>
+                                <li><input type="checkbox" id="CignaWorldwide" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="CignaWorldwide">Cigna Worldwide 信諾環球</label></li>
+                            </div>
+                            <div class="col-6">
+                                <li><input type="checkbox" id="DahSing" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="DahSing">Dah Sing 大新</label></li>
+                                <li><input type="checkbox" id="FTLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="FTLife">FTLife 富通</label></li>
+                                <li><input type="checkbox" id="FWD" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="FWD">FWD 富衛人壽</label></li>
+                                <li><input type="checkbox" id="HongKongLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="HongKongLife">Hong Kong Life 香港人壽</label></li>
+                                <li><input type="checkbox" id="HSBCLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="HSBCLife">HSBC Life 滙豐</label></li>
+                                <li><input type="checkbox" id="Liberty" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Liberty">Liberty 利寶</label></li>
+                                <li><input type="checkbox" id="Manulife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Manulife">Manulife 宏利</label></li>
+                                <li><input type="checkbox" id="MSIG" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="MSIG">MSIG</label></li>
+                                <li><input type="checkbox" id="Prudential" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Prudential">Prudential 保誠</label></li>
+                                <li><input type="checkbox" id="SunLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="SunLife">Sun Life 永明</label></li>
+                                <li><input type="checkbox" id="TaipingLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="TaipingLife">Taiping Life 太平人壽</label></li>
+                                <li><input type="checkbox" id="WellLinkLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="WellLinkLife">Well Link Life 立橋人壽</label></li>
+                                <li><input type="checkbox" id="YFLife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="YFLife">YF Life 萬通</label></li>
+                                <li><input type="checkbox" id="ZALife" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="ZALife">ZA Life 眾安人壽</label></li>
+                                <li><input type="checkbox" id="Zurich" class="planOption" onchange="drawChart()"> <label onclick="preventDropdownClose(event)" for="Zurich">Zurich 蘇黎世</label></li>
+                            </div>
+                        </div>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div id="line_chart" style="width: 100%;"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
+</html>
